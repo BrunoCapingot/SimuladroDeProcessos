@@ -2,7 +2,6 @@ from Factory import Factory
 from Motor import Motor
 from Model import Model
 from View import View
-from Controler.GeradorDeProcessos import ProcessGenerator
 
 
 class Controler:
