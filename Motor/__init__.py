@@ -53,8 +53,9 @@ class Motor:
                         #self.view.vw_desblok_process(**processo.__dict__)
                         self.fila_de_execucao.put(processo)
 
-                if processo.cp >= processo.quantum:
-                    print(f"{processo.pid} FINALIZADO: {processo.__dict__}")
+                if processo.__dict__['cp'] >= processo.__dict__['quantum']:
+                    print(f"{processo.__dict__['pid']} FINALIZADO: {processo.__dict__}")
+                    processo.__dict__['ep'] = 'FINALIZADO'
                     lista.append(processo)
         for processo in lista:
             print(f"PID {processo.__dict__['pid']} :: TP {processo.__dict__['tp']} :: CP {processo.__dict__['cp']} :: NES {processo.__dict__['nes']} :: EP {processo.__dict__['ep']} :: N_CPU {processo.__dict__['n_cpu']} ::  QUANTUM {processo.__dict__['quantum']}")
