@@ -1,3 +1,5 @@
+import random
+
 from Factory import Factory
 from Motor import Motor
 from Model import Model
@@ -11,10 +13,10 @@ class Controler:
 
         motor.adicionar_lista_de_execucao(execution_list=factory.cadastro_site_inadiplentes(datalist=dict(geral_clientes_2023=md.get_table_cvs_relatorio_geral_clientes_2023(),geral_clientes_2025=md.get_csv_geral_clientes_2025()),Model=md,View=vw))
         """
-
-        self.motor = Motor(View=View())
         self.factory = Factory()
-        self.motor.adicionar_lista_de_execucao(execution_list=self.factory.generete_process_list())
+        self.model = Model()
+        self.motor = Motor(View=View())
+        self.motor.preparar_execucao(execution_list=self.factory.get_clock(),data_list=list(self.model.get_nru_parans()))
         self.motor.executar_motor()
 
 
@@ -27,6 +29,7 @@ class Controler:
             #self.gerador.__set__(process_list=self.factory.executar_identificadores_yolo(Model=Model, View=View, data_dict=dict()))
             #self.motor.adicionar_lista_de_execucao(execution_list=self.gerador.__generate_process__(5))
             #self.motor.executar_motor()
+
 
 if __name__ == '__main__':
     Controler()
